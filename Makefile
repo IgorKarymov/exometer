@@ -48,7 +48,7 @@ compile_examples:
 	erlc +'{parse_transform, lager_transform}' -pz deps/lager/ebin -I src -o examples/snmp_manager/ examples/snmp_manager/*.erl
 
 devnode_snmp_agent:
-	erl -sname agent -pa deps/*/ebin ebin -config examples/snmp_agent/sys.config -boot start_sasl -s lager -s crypto -s exometer
+	erl -sname agent -pa deps/*/ebin ebin -config examples/snmp_agent/sys.config -boot start_sasl -s lager -s crypto -s snmp -s exometer
 
 devnode_snmp_manager: compile_examples
 	erl -sname manager -pz examples/snmp_manager -pz deps/*/ebin ebin -config examples/snmp_manager/sys.config \
